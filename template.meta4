@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metalink xmlns="urn:ietf:params:xml:ns:metalink">
+    {{#packages}}
+        <file name="{{checksum}}.tar.gz">
+            <size>{{size}}</size>
+            <hash type="sha-256">{{checksum}}</hash>
+            <url priority="1">https://thief.mycard.moe/dist/{{checksum}}.tar.gz</url>
+            <url priority="1">https://myacg.mycard.moe/dist/{{checksum}}.tar.gz</url>
+        </file>
+    {{/packages}}
+</metalink>
