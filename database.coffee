@@ -23,8 +23,6 @@ getData = (b_name) ->
     ]).then ->
       return release
 
-
-
 loadRelease = (b_name) ->
   new Promise (resolve, reject) ->
     pool.query LOAD_RELEASE, [b_name], (err, result) -> returning_promise_handle err, result, resolve, reject
