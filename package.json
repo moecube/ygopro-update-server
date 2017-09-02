@@ -2,7 +2,7 @@
   "name": "mycard-update-server",
   "version": "0.0.1",
   "scripts": {
-    "start": "coffee -c -b *.coffee && node database.js"
+    "start": "coffee -c -b *.coffee && node server.js"
   },
   "dependencies": {
     "body-parser": "^1.17.2",
