@@ -6,12 +6,13 @@ database = require './database'
 server = express()
 
 json_parser = bodyParser.json()
-server.post '/update', json_parser, (req, res) ->
-  file_list = req.body.fileList
-  b = req.body.b
+
+server.post '/:b', json_parser, (req, res) ->
+  file_list = req.body
+  b = req.params.b
   if !file_list or !b
     res.statusCode = 400
-    res.end 'fileList and b is required'
+    res.end 'file list and b is required'
     return
   database.getData(b).then (release) ->
     wanted_files = lib.compare file_list, release.file_list
@@ -19,6 +20,5 @@ server.post '/update', json_parser, (req, res) ->
     meta = lib.generate packages
     console.log meta
     res.end meta
-
 
 server.listen 10086
