@@ -38,6 +38,7 @@ decision = (wanted_files, full_package, separate_packages, strategy_packages) ->
   final_solution = full_solution
   for solution in solutions
     final_solution = solution if final_solution.price > solution
+  console.log "decide to ￥#{final_solution.price.toFixed(7)}"
   return final_solution.archives
 
 compare_files = (now_file_hash, target_file_list) ->
@@ -45,7 +46,7 @@ compare_files = (now_file_hash, target_file_list) ->
 
 compare_file_lists = (now_file_list, target_file_list) ->
   now_file_hash = new Map
-  now_file_hash[now_file.name] = now_file.checksum for now_file in now_file_list
+  now_file_hash.set now_file.name, now_file.checksum for now_file in now_file_list
   compare_files now_file_hash, target_file_list
 
 template = fs.readFileSync(path.join(__dirname, 'template.meta4')).toString()
