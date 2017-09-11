@@ -7,7 +7,7 @@ server = express()
 
 json_parser = bodyParser.json()
 
-server.post '/ygopro-:b/:version', json_parser, (req, res) ->
+server.post '/ygopro-:b', json_parser, (req, res) ->
   # version is thrown. Only return the latest.
   file_list = req.body
   b = req.params.b
@@ -25,5 +25,8 @@ server.post '/ygopro-:b/:version', json_parser, (req, res) ->
     console.log err
     res.statusCode = 403
     res.end ""
+
+server.post '/*', (req, res) ->
+  res.end "ygopro update server received your request from #{req.url}, but can't reply."
 
 server.listen 10086
