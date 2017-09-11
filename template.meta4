@@ -4,8 +4,6 @@
         <file name="{{checksum}}.tar.gz">
             <size>{{size}}</size>
             <hash type="sha-256">{{checksum}}</hash>
-            <url priority="1">https://thief.mycard.moe/dist/{{checksum}}.tar.gz</url>
-            <url priority="1">https://myacg.mycard.moe/dist/{{checksum}}.tar.gz</url>
-        </file>
+            <url priority="1">https://example.com/{{checksum}}.tar.gz</url>
     {{/packages}}
 </metalink>

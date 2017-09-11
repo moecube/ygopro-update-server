@@ -11,7 +11,7 @@ server.post '/ygopro-:b', json_parser, (req, res) ->
   # version is thrown. Only return the latest.
   file_list = req.body
   b = req.params.b
-  console.log "Get update request from #{b}/#{req.params.version} with #{file_list.length} files."
+  console.log "Get update request from #{b} with #{file_list.length} files."
   if !file_list or !b
     res.statusCode = 400
     res.end 'file list and b is required'
