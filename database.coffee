@@ -24,6 +24,7 @@ getData = (b_name) ->
       return release
 
 loadRelease = (b_name) ->
+  console.log "Loading #{b_name} message from database."
   new Promise (resolve, reject) ->
     pool.query LOAD_RELEASE, [b_name], (err, result) -> returning_promise_handle err, result, resolve, reject
 
