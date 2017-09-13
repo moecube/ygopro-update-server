@@ -10,7 +10,7 @@ calculatePrice = (archives) ->
   total_amount += archives.length * price.requestPrice
 
 decision = (wanted_files, full_package, separate_packages, strategy_packages) ->
-  console.log separate_packages
+  # console.log separate_packages
   # Calculate Full Package Solution Price.
   full_solution =
     archives: [full_package]
