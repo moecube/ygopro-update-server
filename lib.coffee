@@ -40,7 +40,7 @@ decision = (wanted_files, full_package, separate_packages, strategy_packages) ->
   # Decision!
   final_solution = full_solution
   for solution in solutions
-    final_solution = solution if final_solution.price < solution
+    final_solution = solution if final_solution.price > solution
   console.log "decide to ￥#{final_solution.price.toFixed(7)}"
   return final_solution.archives
 
