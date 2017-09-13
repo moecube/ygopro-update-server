@@ -17,7 +17,9 @@ server.post '/ygopro-:b', json_parser, (req, res) ->
     res.end 'file list and b is required'
     return
   database.getData(b).then (release) ->
-    wanted_files = lib.compare file_list, release.file_list
+    # wanted_files = lib.compare file_list, release.file_list
+    wanted_files = file_list
+    wanted_files = [] if !Array.isArray file_list
     packages = lib.decision wanted_files, release.full_package, release.separate_packages, release.strategy_packages
     meta = lib.generate packages
     res.end meta
