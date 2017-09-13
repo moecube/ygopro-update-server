@@ -6,11 +6,11 @@ mustache = require 'mustache'
 calculatePrice = (archives) ->
   total_amount = 0
   for archive in archives
-    total_amount += archive.file.length / 1000 * price.sizePrice
+    total_amount += archive.size / 1000 * price.sizePrice if archive
   total_amount += archives.length * price.requestPrice
 
 decision = (wanted_files, full_package, separate_packages, strategy_packages) ->
-  # console.log wanted_files
+  console.log separate_packages
   # Calculate Full Package Solution Price.
   full_solution =
     archives: [full_package]
@@ -20,10 +20,10 @@ decision = (wanted_files, full_package, separate_packages, strategy_packages) ->
   separate_package_hash = new Map
   for separate_package in separate_packages
     separate_package_hash.set separate_package.file[0], separate_package
-  wanted_separate_packages = wanted_files.map (file) -> separate_package_hash.get file.path
+  wanted_separate_packages = wanted_files.map (file) -> separate_package_hash.get file
   separate_solution =
     archives: wanted_separate_packages
-    price: calculatePrice separate_packages
+    price: calculatePrice wanted_separate_packages
 
   # Calculate Strategy Package Solutions Price
   solutions = [full_solution, separate_solution]
