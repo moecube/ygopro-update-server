@@ -35,7 +35,7 @@ decision = (wanted_files, full_package, separate_packages, strategy_packages) ->
       archives: packages # some packages
       price: calculatePrice packages # some packages
 
-  # console.log solutions
+  console.log solutions
 
   # Decision!
   final_solution = full_solution
