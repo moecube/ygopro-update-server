@@ -54,6 +54,7 @@ compare_file_lists = (now_file_list, target_file_list) ->
 
 template = fs.readFileSync(path.join(__dirname, 'template.meta4')).toString()
 generate_meta = (packages) ->
+  packages = packages.filter (pack) -> pack
   mustache.render template, { "packages": packages }
 
 
