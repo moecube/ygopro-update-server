@@ -38,7 +38,7 @@ loadArchives = (release_name) ->
         archives = new Map
         for row in result.rows
           if archives.has row.archive
-            archives.get(row.archive).files.push row.file
+            archives.get(row.archive).file.push row.file
           else
             archives.set row.archive,
               release: release_name
