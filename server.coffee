@@ -28,7 +28,10 @@ server.post '/ygopro-:b', json_parser, (req, res) ->
     res.statusCode = 403
     res.end ""
 
-server.post '/*', (req, res) ->
+server.post '/clear', (req, res) ->
+  database.clearData()
+
+srver.post '/*', (req, res) ->
   res.end "ygopro update server received your request from #{req.url}, but can't reply."
 
 server.listen 10086

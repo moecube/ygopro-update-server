@@ -7,8 +7,12 @@ LOAD_FILES = 'select * from files where release = $1::text'
 
 pool = new Pool config.database
 
+data_cache = {}
+
 getData = (b_name) ->
   release = null
+  if data_cache.b_name
+    return new Promise (resolve, reject) -> resolve data_cache.b_name
   Promise.resolve loadRelease(b_name).then (releases) ->
     release = releases[0]
     Promise.all([
@@ -21,6 +25,7 @@ getData = (b_name) ->
         release.strategy_packages = archives.strategy_packages
         release
     ]).then ->
+      data_cache.b_name = release
       return release
 
 loadRelease = (b_name) ->
@@ -66,3 +71,4 @@ returning_promise_handle = (err, result, resolve, reject) ->
     resolve result.rows
 
 module.exports.getData = getData
+module.exports.clearData = () -> data_cache = {}
