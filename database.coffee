@@ -15,6 +15,7 @@ getData = (b_name) ->
     return new Promise (resolve, reject) -> resolve data_cache.b_name
   Promise.resolve loadRelease(b_name).then (releases) ->
     release = releases[0]
+    return null unless release
     Promise.all([
       loadFiles(release.name).then (files) ->
         release.file_list = files

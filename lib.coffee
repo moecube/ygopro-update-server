@@ -35,13 +35,12 @@ decision = (wanted_files, full_package, separate_packages, strategy_packages) ->
       archives: packages # some packages
       price: calculatePrice packages # some packages
 
-  console.log solutions
-
   # Decision!
   final_solution = full_solution
   for solution in solutions
     final_solution = solution if final_solution.price > solution.price
-  console.log "decide to ￥#{final_solution.price.toFixed(7)}"
+  solution_description = solutions.map((solution) => "(#{solution.archives.length} File, ￥#{solution.price.toFixed(4)})").join ", "
+  console.log "decide to ￥#{final_solution.price.toFixed(7)} from #{solution_description}"
   return final_solution.archives
 
 compare_files = (now_file_hash, target_file_list) ->
