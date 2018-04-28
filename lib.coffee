@@ -2,6 +2,7 @@ price = require './price.json'
 fs = require 'fs'
 path = require 'path'
 mustache = require 'mustache'
+moment = require 'moment'
 
 calculatePrice = (archives) ->
   total_amount = 0
@@ -40,7 +41,7 @@ decision = (wanted_files, full_package, separate_packages, strategy_packages) ->
   for solution in solutions
     final_solution = solution if final_solution.price > solution.price
   solution_description = solutions.map((solution) => "(#{solution.archives.length} File, ￥#{solution.price.toFixed(4)})").join ", "
-  console.log "decide to ￥#{final_solution.price.toFixed(7)} from #{solution_description}"
+  console.log "[#{moment().format('YYYY-MM-DD HH:mm:ss')}] Decide to ￥#{final_solution.price.toFixed(7)} from #{solution_description}"
   return final_solution.archives
 
 compare_files = (now_file_hash, target_file_list) ->
