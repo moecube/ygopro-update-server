@@ -25,7 +25,7 @@ router.post '/clear', (ctx, next) ->
   ctx.body = 'ok'
 
 router.post '/*', (ctx, next) ->
-  res.end "ygopro update server received your request from #{ctx.url}, but can't reply."
+  ctx.body = "ygopro update server received your request from #{ctx.url}, but can't reply."
 
 
 server.use(router.routes()).use(router.allowedMethods())
